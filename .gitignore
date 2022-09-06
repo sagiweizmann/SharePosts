@@ -1,0 +1,9 @@
+### Yii ###
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+
+# End of https://www.toptal.com/developers/gitignore/api/yii

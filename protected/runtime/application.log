@@ -995,3 +995,4 @@ HTTP_REFERER=http://localhost:8000/index.php?r=gii/form/index
 ---
 2022/09/06 11:12:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shareposts.tbl_users' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_users`.
 in /Users/sagi/repos/source/SharePosts/index.php (13)
+2022/09/06 15:35:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shareposts.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.

@@ -5,9 +5,11 @@ class m220906_073642_create_users_table extends CDbMigration
 	public function up()
 	{
 		$this->createTable('users', array(
-            'id' => 'pk',
+            'id' => 'pk AUTO_INCREMENT',
             'title' => 'string NOT NULL',
-            'content' => 'text', 
+            'email' => 'string NOT NULL',
+			'password' => 'string NOT NULL',
+			'created_at' => 'datetime DEFAULT CURRENT_TIMESTAMP',
         ));
 	}
 
