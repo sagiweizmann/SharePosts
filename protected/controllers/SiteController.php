@@ -97,7 +97,33 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
-
+	public function actionRegister()
+	{
+		$model=new Users('register');
+	
+		// uncomment the following code to enable ajax-based validation
+		/*
+		if(isset($_POST['ajax']) && $_POST['ajax']==='users-register-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+		*/
+	
+		if(isset($_POST['Users']))
+		{
+			$model->attributes=$_POST['Users'];
+			if($model->validate())
+			{
+				$model->attributes=$_POST['Users'];
+				if($model->save()){
+					Yii::app()->user->setFlash('register','User Registered Successfully :)');
+					$this->refresh();
+				}
+			}
+		}
+		$this->render('register',array('model'=>$model));
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
