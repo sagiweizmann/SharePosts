@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'users':
  * @property integer $id
- * @property string $title
+ * @property string $username
  * @property string $email
  * @property string $password
  * @property string $created_at
@@ -28,12 +28,12 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, email, password', 'required'),
-			array('title, email, password', 'length', 'max'=>255),
+			array('username, email, password', 'required'),
+			array('username, email, password', 'length', 'max'=>255),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, email, password, created_at', 'safe', 'on'=>'search'),
+			array('id, username, email, password, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +55,7 @@ class Users extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
+			'username' => 'Username',
 			'email' => 'Email',
 			'password' => 'Password',
 			'created_at' => 'Created At',
@@ -81,7 +81,7 @@ class Users extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
+		$criteria->compare('username',$this->username,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('created_at',$this->created_at,true);
