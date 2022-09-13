@@ -51,11 +51,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
-	<?php
-		$model->created_at = date("Y-m-d H:i:s");
-	?>
-
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
