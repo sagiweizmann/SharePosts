@@ -22,10 +22,15 @@ class UserIdentity extends CUserIdentity
 			'demo'=>'demo',
 			'admin'=>'admin',
 		);
-		if(!isset($users[$this->username]))
+		$user = new Users('login');
+		$this->password=password_hash($this->password,PASSWORD_DEFAULT);
+		$user = $user->login($this->username);
+		if(!isset($user->username)){
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}
+		elseif(password_verify($this->password, $user->password))
+		{
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;		}
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
