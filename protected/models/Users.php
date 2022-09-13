@@ -34,6 +34,8 @@ class Users extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, email, password, created_at', 'safe', 'on'=>'search'),
+			array('username', 'checkUserExists'),
+			array('email', 'checkEmailExists'),
 		);
 	}
 
@@ -83,7 +85,6 @@ class Users extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('password',$this->password,true);
 		$criteria->compare('created_at',$this->created_at,true);
 
 		return new CActiveDataProvider($this, array(
@@ -100,5 +101,38 @@ class Users extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public function checkUserExists($attribute, $params)
+	{
+		$user = self::model()->find(array(
+			'select'=>'username',
+			'condition'=>'username=:Username',
+			'params'=>array(':Username'=>$this->username),
+		));
+
+		if (isset($user)){
+			$this->addError($attribute, 'Username already exists.');
+		}
+
+	}
+	public function checkEmailExists($attribute,$params){
+		$email = self::model()->find(array(
+			'select'=>'email',
+			'condition'=>'email=:Email',
+			'params'=>array(':Email'=>$this->email),
+		));
+
+		if(isset($email)){
+			$this->addError($attribute, 'Email already exists.');
+		}
+	}
+	public static function login($username){
+		$user = self::model()->find(array(
+			'select'=>'username',
+			'condition'=>'username=:Username',
+			'params'=>array(':Username'=>$username),
+		));
+		return $user;
 	}
 }
