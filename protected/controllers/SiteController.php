@@ -116,8 +116,10 @@ class SiteController extends Controller
 			if($model->validate())
 			{
 				$model->attributes=$_POST['Users'];
+				$model->created_at = date("Y-m-d H:i:s");
+				$model->password = password_hash($model->password, PASSWORD_DEFAULT);
 				if($model->save()){
-					Yii::app()->user->setFlash('register','User Registered Successfully :)');
+					Yii::app()->user->setFlash('register','User ' . $model->username . ' Registered Successfully :)');
 					$this->refresh();
 				}
 			}
