@@ -126,6 +126,30 @@ class SiteController extends Controller
 		}
 		$this->render('register',array('model'=>$model));
 	}
+	public function actionPost()
+	{
+    $model=new Post;
+
+    // uncomment the following code to enable ajax-based validation
+    /*
+    if(isset($_POST['ajax']) && $_POST['ajax']==='post-post-form')
+    {
+        echo CActiveForm::validate($model);
+        Yii::app()->end();
+    }
+    */
+
+    if(isset($_POST['Post']))
+    {
+        $model->attributes=$_POST['Post'];
+        if($model->validate())
+        {
+            // form inputs are valid, do something here
+            return;
+        }
+    }
+    $this->render('post',array('model'=>$model));
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

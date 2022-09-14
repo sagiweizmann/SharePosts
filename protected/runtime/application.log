@@ -996,3 +996,19 @@ HTTP_REFERER=http://localhost:8000/index.php?r=gii/form/index
 2022/09/06 11:12:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shareposts.tbl_users' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_users`.
 in /Users/sagi/repos/source/SharePosts/index.php (13)
 2022/09/06 15:35:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shareposts.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2022/09/14 14:43:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "posts".' in /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php(141): CWebApplication->runController('posts')
+#1 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /Users/sagi/repos/source/SharePosts/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=posts
+---
+2022/09/14 15:05:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index".' in /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php(141): CWebApplication->runController('index')
+#1 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /Users/sagi/repos/source/SharePosts/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=index
+---
