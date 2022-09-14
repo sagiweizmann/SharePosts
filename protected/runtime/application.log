@@ -1012,3 +1012,27 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/index.php?r=index
 ---
+2022/09/14 15:34:43 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#3 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CController.php(291): CFilterChain->run()
+#6 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php(282): CController->run('')
+#8 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php(141): CWebApplication->runController('post')
+#9 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /Users/sagi/repos/source/SharePosts/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=post
+---
+2022/09/14 16:45:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "posts".' in /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/web/CWebApplication.php(141): CWebApplication->runController('posts')
+#1 /Users/sagi/repos/source/yii-1.1.25.43e386/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /Users/sagi/repos/source/SharePosts/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=posts
+---

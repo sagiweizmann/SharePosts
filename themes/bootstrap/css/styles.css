@@ -1,3 +1,11 @@
 #page {
     padding-top: 60px;
 }
+
+.view {
+    background-color: #e6e4e4;
+     border-bottom: 1px solid #000;
+}
+.view:first-child {
+    border-top: 1px solid #000;
+}
