@@ -17,11 +17,6 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
 		$user = new Users('login');
 		$this->password=password_hash($this->password,PASSWORD_DEFAULT);
 		$user = $user->login($this->username);
@@ -30,7 +25,8 @@ class UserIdentity extends CUserIdentity
 		}
 		elseif(password_verify($this->password, $user->password))
 		{
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;		}
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;		
+		}
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
