@@ -5,5 +5,5 @@ protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
 themes/classic/views/
-
+protected/runtime/application.log
 # End of https://www.toptal.com/developers/gitignore/api/yii
