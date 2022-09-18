@@ -102,20 +102,19 @@ class SiteController extends Controller
 		$model=new Users('register');
 	
 		// uncomment the following code to enable ajax-based validation
-		/*
+		
 		if(isset($_POST['ajax']) && $_POST['ajax']==='users-register-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-		*/
+		
 	
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
 			if($model->validate())
 			{
-				$model->attributes=$_POST['Users'];
 				$model->created_at = date("Y-m-d H:i:s");
 				$model->password = password_hash($model->password, PASSWORD_DEFAULT);
 				if($model->save()){
@@ -128,7 +127,7 @@ class SiteController extends Controller
 	}
 	public function actionPost()
 	{
-    $model=new Post;
+    $model=new Post('post');
 
     // uncomment the following code to enable ajax-based validation
     /*
@@ -142,11 +141,15 @@ class SiteController extends Controller
     if(isset($_POST['Post']))
     {
         $model->attributes=$_POST['Post'];
-        if($model->validate())
-        {
-            // form inputs are valid, do something here
-            return;
-        }
+		if($model->validate())
+		{
+			$model->user_id = Yii::app()->user->getId();
+			$model->created_at = date("Y-m-d H:i:s");
+			if($model->save()){
+				Yii::app()->user->setFlash('post','Posted Successfully ');
+				$this->refresh();
+			}
+		}
     }
     $this->render('post',array('model'=>$model));
 	}
