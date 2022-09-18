@@ -28,10 +28,11 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, title, body', 'required'),
+			array('title, body', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('created_at', 'safe'),
+
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, title, body, created_at', 'safe', 'on'=>'search'),
@@ -101,5 +102,10 @@ class Post extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public static function getAllPosts(){
+		$posts=Post::model()->findAll();
+		return $posts;
 	}
 }
