@@ -129,10 +129,18 @@ class Users extends CActiveRecord
 	}
 	public static function login($username){
 		$user = self::model()->find(array(
-			'select'=>'username',
+			'select'=>'*',
 			'condition'=>'username=:Username',
 			'params'=>array(':Username'=>$username),
 		));
 		return $user;
+	}
+	public static function getUserNameById($id){
+		$user = self::model()->find(array(
+			'select'=>'username',
+			'condition'=>'id=:Id',
+			'params'=>array(':Id'=>$id),
+		));
+		return $user->username;
 	}
 }

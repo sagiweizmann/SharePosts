@@ -1,43 +1,48 @@
 <?php
-/* @var $this PostController */
-/* @var $model Post */
-/* @var $form CActiveForm */
+/* @var $this SiteController */
+/* @var $model PostForm */
+/* @var $form CActiveForm  */
+
+$this->pageTitle=Yii::app()->name . ' - Share New Post';
+$this->breadcrumbs=array(
+	'Post',
+);
 ?>
+<?php if(Yii::app()->user->hasFlash('post')): ?>
+
+<div class="alert alert-success">
+<?php echo Yii::app()->user->getFlash('post'); 	?>
+</div>
+<?php else: ?>
+<h1>Share New Post</h1>
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'post-post-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// See class documentation of CActiveForm for details on this,
-	// you need to use the performAjaxValidation()-method described there.
-	'enableAjaxValidation'=>false,
+    'type'=>'horizontal',
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
 )); ?>
+	<div style="height: 20px;"></div>
 
-	<h1>Create a New Public Post</h1>
+	<?php echo $form->textFieldRow($model,'title'); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->textFieldRow($model,'body'); ?>
 
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title'); ?>
-		<?php echo $form->error($model,'title'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textField($model,'body'); ?>
-		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+	<div class="form-actions">
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'submit',
+            'type'=>'primary',
+            'label'=>'Post',
+        )); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<?php endif; ?>
