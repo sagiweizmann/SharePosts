@@ -39,13 +39,10 @@ if(!Yii::app()->user->isGuest):?>
 	<?php echo $form->errorSummary($model); ?>
 
 		<?php echo $form->textFieldRow($model,'username',array('maxlength'=>255)); ?>
-		<?php echo $form->error($model,'username'); ?>
 
 		<?php echo $form->textFieldRow($model,'email',array('maxlength'=>255)); ?>
-		<?php echo $form->error($model,'email'); ?>
 
 		<?php echo $form->passwordFieldRow($model,'password',array('maxlength'=>255)); ?>
-		<?php echo $form->error($model,'password'); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
