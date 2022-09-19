@@ -17,7 +17,6 @@ if (Yii::app()->user->isGuest) :
 else :
 ?>
     <?php
-    $posts = Post::getAllPosts();
     foreach (array_reverse($posts) as $post) :
     ?>
         <div class="post">
