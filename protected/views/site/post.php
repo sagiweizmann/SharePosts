@@ -2,11 +2,13 @@
 /* @var $this SiteController */
 /* @var $model PostForm */
 /* @var $form CActiveForm  */
+Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 $this->pageTitle=Yii::app()->name . ' - Share New Post';
 $this->breadcrumbs=array(
 	'Post',
 );
+
 ?>
 <?php if(Yii::app()->user->hasFlash('post')): ?>
 
@@ -30,9 +32,20 @@ $this->breadcrumbs=array(
 
 	<?php echo $form->textFieldRow($model,'title'); ?>
 
-	<?php echo $form->textFieldRow($model,'body'); ?>
+<label for="body">Body <span class="required">*</label></p>
+	<?php
+	$this->widget('ImperaviRedactorWidget', array(
+		'model' => $model,
+		'attribute' => 'body',
 
-
+		'options' => array(
+			'lang' => 'en',
+			'toolbar' => true,
+			'iframe' => false,
+			'css' => 'wym.css',
+		),
+	));
+	?>
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'submit',
