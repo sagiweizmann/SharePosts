@@ -103,8 +103,10 @@ class Users extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function checkUserExists($attribute, $params)
+	public function checkUserExists($attribute)
 	{
+		assert(isset($username));
+
 		$user = self::model()->find(array(
 			'select'=>'username',
 			'condition'=>'username=:Username',
@@ -116,7 +118,7 @@ class Users extends CActiveRecord
 		}
 
 	}
-	public function checkEmailExists($attribute,$params){
+	public function checkEmailExists($attribute){
 		$email = self::model()->find(array(
 			'select'=>'email',
 			'condition'=>'email=:Email',
@@ -128,6 +130,8 @@ class Users extends CActiveRecord
 		}
 	}
 	public static function login($username){
+		assert(isset($username));
+
 		$user = self::model()->find(array(
 			'select'=>'*',
 			'condition'=>'username=:Username',
@@ -136,6 +140,8 @@ class Users extends CActiveRecord
 		return $user;
 	}
 	public static function getUserNameById($id){
+		assert(isset($id));
+
 		$user = self::model()->find(array(
 			'select'=>'username',
 			'condition'=>'id=:Id',

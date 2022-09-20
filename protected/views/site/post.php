@@ -29,10 +29,14 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 	<div style="height: 20px;"></div>
+	<?php echo $form->labelEx($model,'title'); ?>
 
-	<?php echo $form->textFieldRow($model,'title'); ?>
+	<?php echo $form->textField($model,'title'); ?>
+	<?php echo $form->error($model,'title'); ?>
 
-<label for="body">Body <span class="required">*</label></p>
+	<div style="height: 20px;"></div>
+
+	<?php echo $form->labelEx($model,'body'); ?>
 	<?php
 	$this->widget('ImperaviRedactorWidget', array(
 		'model' => $model,
@@ -46,6 +50,8 @@ $this->breadcrumbs=array(
 		),
 	));
 	?>
+    <?php echo $form->error($model,'body'); ?>
+
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'submit',

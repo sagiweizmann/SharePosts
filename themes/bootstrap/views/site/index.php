@@ -30,6 +30,12 @@ else :
                 </div>
                 <?php echo 'Posted By ' . '<span style="color:grey;">'. Users::getUserNameById($post->user_id); '</span>' ?>
             </div>
+            
+            <div class="like-comment-share-warpper">
+                <div class="like">Like</div>
+                <div class="comment">Comment</div>
+                <div class="share">Share</div>
+            </div>
         </div>
     <?php
     endforeach;
@@ -37,3 +43,11 @@ else :
 <?php endif; ?>
 
 <?php $this->endWidget(); ?>
+<style>
+    .like-comment-share-warpper{
+        padding-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+</style>

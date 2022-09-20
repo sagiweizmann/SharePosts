@@ -10,8 +10,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SharePosts',
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+	// preloading 'log' component & fontawesome5
+	'preload'=>array('log','fontawesome5'),
 	'theme' => 'bootstrap',
 	// autoloading model and component classes
 	'import'=>array(
@@ -42,6 +42,10 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 
+		//fontawesome5
+		'fontawesome5'=>array(
+            'class'=>'ext.fontawesome5.FontAwesome5Component',      
+        ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
